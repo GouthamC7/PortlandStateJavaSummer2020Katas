@@ -10,24 +10,72 @@ public class Kata {
 
 
   public static String toRomanNumeral(int number) {
-    switch (number) {
-      case 1: return "I";
+    StringBuilder numeral = new StringBuilder();
 
-      case 5: return "V";
+    if (number < 5) {
+      // Up to III
+      if (number < 4) {
+        for (int i = 0; i < number; i++) {
+          numeral.append("I");
+        }
+      } else {
+        // number == 4
+        numeral.append("IV");
+      }
+    } else if (number < 10) {
+      // number is 5-9
+      if (number == 5) {
+        numeral.append("V");
+      }
 
-      case 10: return "X";
+      /*
+      else if (number == 9) {
+        numeral.append("IX");
+      }
 
-      case 50: return "L";
 
-      case 100: return "C";
+      if (number < 9) {
+        for (int i = 0; i < number; i++) {
+          numeral.append("I");
+        }
+      } else {
+        // number == 4
+        numeral.append("IV");
+      }
+      */
 
-      case 500: return "D";
+    } else if (number < 50) {
+      // number is 10-49
+      if (number == 10) {
+        numeral.append("X");
+      }
 
-      case 1000: return "M";
+    } else if (number < 100) {
+      // number is 50-99
+      if (number == 50) {
+        numeral.append("L");
+      }
 
-      default: throw new IllegalStateException("Invalid number");
+    } else if (number < 500) {
+      // number is 100-499
+      if (number == 100) {
+        numeral.append("C");
+      }
+
+    } else if (number < 1000) {
+      // number is 500-999
+      if (number == 500) {
+        numeral.append("D");
+      }
+
+    } else {
+      // number is >= 1000
+      if (number == 1000) {
+        numeral.append("M");
+      }
     }
 
+    return numeral.toString();
   }
                                                                                     
 
